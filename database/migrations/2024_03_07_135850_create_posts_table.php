@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('post_image_url');
+            $table->string('image_url');
             $table->unsignedBigInteger('likes_count')->default(0);
             $table->boolean('liked')->default(false);
+            $table->string('description')->default('');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('user_full_name');
             $table->string('user_name');
