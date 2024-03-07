@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $table = 'posts';
+
+    protected $fillable = [
+        'image_url',
+        'description',
+    ];
+
+    public $timestamps = [
+        'created_at',
+        'updated_at',
+    ];
+
+    public function posts()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
