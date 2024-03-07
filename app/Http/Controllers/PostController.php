@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -11,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -19,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -27,7 +31,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image_url' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $post = new Post();
+        $post->image_url = $request->input('image_url');
+        $post->description = $request->input('description');
+
+        $post->save();
+
+        return response()->json(['message' => 'Record created successfully'], 201);
     }
 
     /**
@@ -35,7 +50,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+
+        return view('post.show', ['post' => Post::find($id)]);
     }
 
     /**
@@ -43,7 +60,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+
+        return view('post.edit', ['post' => Post::find($id)]);
     }
 
     /**
@@ -51,7 +70,21 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::find($id);
+
+        if (!$post) return response()->json(['message' => 'Record not found'], 404);
+
+        $request->validate([
+            'image_url' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $post->image_url = $request->input('image_url');
+        $post->description = $request->input('description');
+
+        $post->save();
+
+        return response()->json(['message' => 'Record updated successfully'], 201);
     }
 
     /**
@@ -59,6 +92,11 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+
+        Post::find($id)->delete();
+
+
+        return response()->json(['message' => 'Record deleted successfully'], 201);
     }
 }
