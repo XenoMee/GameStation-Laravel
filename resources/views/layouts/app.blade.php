@@ -18,18 +18,18 @@
 
 <body class="grid place-content-center text-[.875rem] bg-slate-500 py-8">
     <main>
-        <section class="shadow-sm max-w-xs bg-white rounded-xl">
+        <section class="shadow-sm max-w-x rounded-xl">
             <header class="flex items-center justify-between p-2 border-b-2 border-gray-400">
                 <div class="logo">
-                    <img class="w-32" src="./assets/images/logo.png" alt="">
+                    <img class="w-32" src="../assets/images/logo.png" alt="">
                 </div>
                 <div class="account-avatar">
-                    <img class="w-10 rounded-full mr-2" src="./assets/images/avatars/user-avatar.jpg" alt="">
+                    <img class="w-10 rounded-full mr-2" src="../assets/images/avatars/user-avatar.jpg" alt="">
                 </div>
             </header>
-
-            @include('posts.index');
-
+            <div class="posts grid gap-4"
+                @include('posts.index');
+            </div>
         </section>
     </main>
 </body>
