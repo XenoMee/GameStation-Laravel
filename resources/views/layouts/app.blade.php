@@ -28,7 +28,7 @@
                 </div>
             </header>
 
-            
+            @include('posts.index');
 
         </section>
     </main>

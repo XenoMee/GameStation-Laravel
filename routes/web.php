@@ -14,6 +14,6 @@ Route::delete('/posts/{id}', [PostController::class, 'delete']);
 
 
 
-Route::get('/', function () {
-    return view('posts.index');
-});
+// Route::get('/', function () {
+//     return view('posts.index');
+// });
