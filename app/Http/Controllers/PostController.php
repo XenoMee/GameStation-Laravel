@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\User;
 
 class PostController extends Controller
 {
@@ -15,7 +14,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('post.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -23,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('posts.create');
     }
 
     /**
@@ -42,7 +41,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return response()->json(['message' => 'Record created successfully'], 201);
+        return response()->json(['message' => 'Post created successfully'], 201);
     }
 
     /**
@@ -50,9 +49,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+        if (!Post::find($id)) return response()->json(['message' => 'Post not found'], 404);
 
-        return view('post.show', ['post' => Post::find($id)]);
+        return view('posts.show', ['post' => Post::find($id)]);
     }
 
     /**
@@ -60,9 +59,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+        if (!Post::find($id)) return response()->json(['message' => 'Post not found'], 404);
 
-        return view('post.edit', ['post' => Post::find($id)]);
+        return view('posts.edit', ['post' => Post::find($id)]);
     }
 
     /**
@@ -72,7 +71,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if (!$post) return response()->json(['message' => 'Record not found'], 404);
+        if (!$post) return response()->json(['message' => 'Post not found'], 404);
 
         $request->validate([
             'image_url' => 'required|string',
@@ -84,7 +83,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return response()->json(['message' => 'Record updated successfully'], 201);
+        return response()->json(['message' => 'Post updated successfully'], 201);
     }
 
     /**
@@ -92,11 +91,11 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!Post::find($id)) return response()->json(['message' => 'Record not found'], 404);
+        if (!Post::find($id)) return response()->json(['message' => 'Post not found'], 404);
 
         Post::find($id)->delete();
 
 
-        return response()->json(['message' => 'Record deleted successfully'], 201);
+        return response()->json(['message' => 'Post deleted successfully'], 201);
     }
 }
