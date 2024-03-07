@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $fillable = [
         'image_url',
+        'likes_count',
         'description',
     ];
 
@@ -21,8 +22,8 @@ class Post extends Model
         'updated_at',
     ];
 
-    public function posts()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Post::class);
     }
 }
