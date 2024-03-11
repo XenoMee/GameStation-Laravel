@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Contracts\Service\Attribute\Required;
 
 return new class extends Migration
 {
@@ -15,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->string('name');
-            $table->string('location');
-            $table->string('avatar_url')->default("");
+            $table->string('location')->nullable();
+            $table->string('avatar_url')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

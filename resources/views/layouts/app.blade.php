@@ -11,24 +11,23 @@
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" type="module" defer></script>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>GameStation</title>
 </head>
 
 <body class="grid place-content-center text-[.875rem] bg-slate-500 py-8">
     <main>
-        <section class="shadow-sm max-w-x rounded-xl">
-            <header class="flex items-center justify-between p-2 border-b-2 border-gray-400">
+        <section class="shadow-sm max-w-xs rounded-xl">
+            <header class="flex items-center bg-white justify-between p-2 border-b-2 border-gray-400">
                 <div class="logo">
-                    <img class="w-32" src="../assets/images/logo.png" alt="">
+                    <img class="w-32" src="{{asset('images/logo.png')}}" alt="">
                 </div>
                 <div class="account-avatar">
-                    <img class="w-10 rounded-full mr-2" src="../assets/images/avatars/user-avatar.jpg" alt="">
+                    <img class="w-10 rounded-full mr-2" src="{{asset('images/avatars/user-default-avatar.png')}}" alt="">
                 </div>
             </header>
-            <div class="posts grid gap-4"
-                @include('posts.index');
+            <div class="posts grid gap-4">
+                @yield('post')
             </div>
         </section>
     </main>
