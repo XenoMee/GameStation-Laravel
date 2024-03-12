@@ -1,16 +1,17 @@
 const postsContainer = document.querySelector(".posts");
 postsContainer.addEventListener("click", (e) => {
-    console.log(e.target.classList.contains(".btn-heart"));
-    if (
-        e.target.classList.contains("btn-heart") ||
-        e.target.tagName === "IMG"
-    ) {
+    const clickedLikeBtn = e.target.closest(".btn-like");
+    const clickedPostImage = e.target.tagName === "IMG";
+
+    if (!clickedLikeBtn && !clickedPostImage) return;
+
+    if (clickedLikeBtn || clickedPostImage) {
         const postEl = e.target.closest(".post");
         let isLiked = postEl.getAttribute("data-status") === "liked";
         if (!postEl) return;
 
         const likeIcon = postEl.querySelector(".icon-heart");
-        const likeBtn = postEl.querySelector(".btn-heart");
+        const likeBtn = postEl.querySelector(".btn-like");
         const likeCount = postEl.querySelector(".post__likes");
         let currentLikes = Number(likeCount.textContent);
 

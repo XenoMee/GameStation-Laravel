@@ -18,7 +18,7 @@
 
     <div class="px-2 py-4 grid gap-2 items-center">
         <div class="post__icons flex items-center gap-[.7rem]">
-            <button class="btn-heart rounded-full hover:cursor-pointer">
+            <button class="btn-like rounded-full hover:cursor-pointer">
                 <svg class="icon icon-heart" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
             </button>
             <button class="btn-share rounded-full hover:cursor-pointer">
