@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+* {
+    transition: all 250ms ease-in-out;
+}
+
 /* Prevent font size inflation */
 html {
     -moz-text-size-adjust: none;
@@ -87,4 +91,8 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
     scroll-margin-block: 5ex;
+}
+
+.liked {
+    fill: rgb(239, 68, 68);
 }
